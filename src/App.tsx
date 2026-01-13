@@ -1,10 +1,12 @@
+import { Heading } from "./components/Heading";
+
 import "./styles/theme.css";
 import "./styles/gobal.css";
 
 export function App() {
   return (
     <>
-      <h1>Hello World!</h1>
+      <Heading />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod,
         perspiciatis ratione earum architecto at dolores fugiat reprehenderit
