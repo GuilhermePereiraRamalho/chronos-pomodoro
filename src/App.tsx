@@ -1,12 +1,11 @@
 import { Heading } from "./components/Heading";
-
 import "./styles/theme.css";
 import "./styles/gobal.css";
 
 export function App() {
   return (
     <>
-      <Heading />
+      <Heading attr={123} attr2='String'>Hello world</Heading>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod,
         perspiciatis ratione earum architecto at dolores fugiat reprehenderit
