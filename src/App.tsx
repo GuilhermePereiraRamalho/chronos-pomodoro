@@ -1,7 +1,8 @@
 import "./styles/theme.css";
 import "./styles/gobal.css";
-import { Container } from "./components/Container";
+
 import { Heading } from "./components/Heading";
+import { Container } from "./components/Container";
 
 export function App() {
   return (
