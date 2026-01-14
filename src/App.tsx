@@ -1,11 +1,17 @@
-import { Heading } from "./components/Heading";
-import "./styles/theme.css";
-import "./styles/gobal.css";
+import { Heading } from './components/Heading';
+import './styles/theme.css';
+import './styles/gobal.css';
+import { TimerIcon } from 'lucide-react';
 
 export function App() {
   return (
     <>
-      <Heading attr={123} attr2='String'>Hello world</Heading>
+      <Heading>
+        Hello world
+        <button>
+          <TimerIcon />
+        </button>
+      </Heading>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod,
         perspiciatis ratione earum architecto at dolores fugiat reprehenderit
