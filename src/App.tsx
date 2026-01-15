@@ -25,7 +25,7 @@ export function App() {
       <Container>
         <form action="" className="form">
           <div className="formRow">
-            <DefaultInput type="text" id="myInput" />
+            <DefaultInput type="text" id="myInput" labelText="Task"/>
           </div>
 
           <div className="formRow">
