@@ -1,9 +1,9 @@
-import { Heading } from "./components/Heading";
 import { Container } from "./components/Container";
 import { Logo } from "./components/Logo";
 
 import "./styles/theme.css";
 import "./styles/gobal.css";
+import { Menu } from "./components/Menu";
 
 export function App() {
   return (
@@ -13,7 +13,7 @@ export function App() {
       </Container>
 
       <Container>
-        <Heading>MENU</Heading>
+        <Menu />
       </Container>
 
     </>
