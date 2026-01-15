@@ -25,12 +25,18 @@ export function App() {
       <Container>
         <form action="" className="form">
           <div className="formRow">
-            <DefaultInput type="text" id="myInput" labelText="Task"/>
+            <DefaultInput
+              type="text"
+              id="myInput"
+              labelText="Task"
+              placeholder="type something"
+            />
           </div>
 
           <div className="formRow">
             <p>
-              In this cycle, <strong>rest</strong> for <strong>5 minutes</strong>.
+              In this cycle, <strong>rest</strong> for{" "}
+              <strong>5 minutes</strong>.
             </p>
           </div>
 
@@ -44,7 +50,6 @@ export function App() {
           </div>
         </form>
       </Container>
-
     </>
   );
 }
