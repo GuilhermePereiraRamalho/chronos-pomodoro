@@ -10,10 +10,25 @@ import { Cycles } from "./components/Cycles";
 import { DefaultButton } from "./components/DefaultButton";
 import { PlayCircleIcon } from "lucide-react";
 import { Footer } from "./components/Footer";
+import { Heading } from "./components/Heading";
 
 export function App() {
+  let number = 0;
+
+  function handleClick() {
+    const span = document.getElementById("number");
+
+    if (!span) return;
+    number += 1;
+    span.innerText = number.toString();
+    console.log(number, Date.now());
+  }
   return (
     <>
+      <Heading>
+        Number: <span id="number">{number}</span>
+      </Heading>
+      <button onClick={handleClick}>Increase</button>
       <Container>
         <Logo />
       </Container>
@@ -32,7 +47,7 @@ export function App() {
             <DefaultInput
               type="text"
               id="myInput"
-              labelText="Task"
+              labelText={number.toString()}
               placeholder="type something"
             />
           </div>
