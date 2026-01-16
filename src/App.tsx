@@ -11,22 +11,24 @@ import { DefaultButton } from "./components/DefaultButton";
 import { PlayCircleIcon } from "lucide-react";
 import { Footer } from "./components/Footer";
 import { Heading } from "./components/Heading";
+import { useState } from "react";
 
 export function App() {
-  let number = 0;
+  // const [number, setNumber] = useState(() => {
+  //   console.log("Laze initialization");
+  //   return 0;
+  // });
+
+  const [number, setNumber] = useState(0)
 
   function handleClick() {
-    const span = document.getElementById("number");
-
-    if (!span) return;
-    number += 1;
-    span.innerText = number.toString();
-    console.log(number, Date.now());
+    setNumber(prevState => prevState + 1);
   }
+
   return (
     <>
       <Heading>
-        Number: <span id="number">{number}</span>
+        Number: {number}
       </Heading>
       <button onClick={handleClick}>Increase</button>
       <Container>
