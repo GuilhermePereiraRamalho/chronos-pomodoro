@@ -2,11 +2,14 @@ import { PlayCircleIcon } from "lucide-react";
 import { DefaultInput } from "../DefaultInput";
 import { Cycles } from "../Cycles";
 import { DefaultButton } from "../DefaultButton";
+import { useState } from "react";
 
 export function MainForm() {
+  const [taskName, setTaskName] = useState('');
+
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
-    console.log("It works")
+    console.log("It works");
   }
 
   return (
@@ -17,6 +20,8 @@ export function MainForm() {
           id="myInput"
           labelText="Task"
           placeholder="Type something"
+          value={taskName}
+          onChange={(e) => setTaskName(e.target.value)}
         />
       </div>
 
