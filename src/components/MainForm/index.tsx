@@ -4,14 +4,19 @@ import { Cycles } from "../Cycles";
 import { DefaultButton } from "../DefaultButton";
 
 export function MainForm() {
+  function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>): void {
+    event.preventDefault();
+    console.log("It works")
+  }
+
   return (
-    <form action="" className="form">
+    <form onSubmit={handleCreateNewTask} action="" className="form">
       <div className="formRow">
         <DefaultInput
           type="text"
           id="myInput"
-          labelText="task"
-          placeholder="type something"
+          labelText="Task"
+          placeholder="Type something"
         />
       </div>
 
