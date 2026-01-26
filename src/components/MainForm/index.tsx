@@ -62,6 +62,7 @@ export function MainForm() {
           labelText="Task"
           placeholder="Type something"
           ref={taskNameInput}
+          disabled={!!state.activeTask}
         />
       </div>
 
