@@ -43,6 +43,8 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
     if (!state.activeTask) {
       worker.terminate();
     }
+
+    document.title = `${state.formatedSecondsRemaining} - Chronos Promodoro`;
     worker.postMessage(state);
   }, [worker, state]);
 
