@@ -8,6 +8,7 @@ import {
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import { RouterLink } from "../RouterLink";
 
 type AvailableThemes = "dark" | "light";
 
@@ -49,23 +50,23 @@ export function Menu() {
       >
         <HouseIcon />
       </Link>
-      <a
+      <RouterLink
         className={styles.menuLink}
-        href=""
+        href="/history/"
         aria-label="View history"
         title="View history"
       >
         <HistoryIcon />
-      </a>
-      <a
+      </RouterLink>
+      <RouterLink
         className={styles.menuLink}
-        href=""
+        href="/settings/"
         aria-label="Go to settings"
         title="Go to settings"
       >
         <SettingsIcon />
-      </a>
-      <a
+      </RouterLink>
+      <RouterLink
         className={styles.menuLink}
         href="#"
         aria-label="Change theme"
@@ -73,7 +74,7 @@ export function Menu() {
         onClick={(event) => handleThemeChange(event)}
       >
         {nextThemeIcon[theme]}
-      </a>
+      </RouterLink>
     </nav>
   );
 }
