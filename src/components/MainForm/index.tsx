@@ -9,6 +9,7 @@ import { getNextCycle } from "../../utils/getNextCycle";
 import { getNextCycleType } from "../../utils/getNextCycleType";
 import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 import { Tips } from "../Tips";
+import { showMessage } from "../../adapters/showMessage";
 
 export function MainForm() {
   const { state, dispatch } = useTaskContext();
@@ -19,13 +20,14 @@ export function MainForm() {
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
+    showMessage.dismiss();
 
     if (taskNameInput.current === null) return;
 
     const taskName = taskNameInput.current.value.trim();
 
     if (!taskName) {
-      alert("Enter the task name");
+      showMessage.warn("Enter the task name");
       return;
     }
 
@@ -40,9 +42,13 @@ export function MainForm() {
     };
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
+
+    showMessage.success("Task started");
   }
 
   function handleInterruptTask() {
+    showMessage.dismiss();
+    showMessage.error("Task interrupted");
     dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
   }
 
