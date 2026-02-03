@@ -5,8 +5,10 @@ import { Heading } from "../../components/Heading";
 import { MainTemplate } from "../../templates/MainTemplate";
 
 import styles from "./styles.module.css";
+import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 
 export function History() {
+  const { state } = useTaskContext();
   return (
     <>
       <MainTemplate>
@@ -37,14 +39,14 @@ export function History() {
                 </tr>
               </thead>
               <tbody>
-                {Array.from({ length: 20 }).map((_, index) => {
+                {state.tasks.map(task => {
                   return (
-                    <tr key={index}>
-                      <td>Study</td>
-                      <td>25min</td>
-                      <td>03/02/2026</td>
-                      <td>Completed</td>
-                      <td>Focus</td>
+                    <tr key={task.id}>
+                      <td>{task.name}</td>
+                      <td>{task.duration}</td>
+                      <td>{new Date(task.startDate).toISOString()}</td>
+                      <td>{task.interruptDate}</td>
+                      <td>{task.type}</td>
                     </tr>
                   );
                 })}
