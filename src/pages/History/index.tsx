@@ -15,7 +15,6 @@ import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 
 export function History() {
   const { state, dispatch } = useTaskContext();
-  const [confirmClearHistory, setConfirmClearHistory] = useState(false);
   const hasTasks = state.tasks.length > 0;
 
   const [sortOptions, setSortOptions] = useState<{
@@ -35,11 +34,10 @@ export function History() {
   }, [state.tasks, sortOptions.field, sortOptions.direction]);
 
   useEffect(() => {
-    if (!confirmClearHistory) return;
-
-    setConfirmClearHistory(false);
-    dispatch({ type: TaskActionTypes.RESET_STATE });
-  }, [confirmClearHistory, dispatch]);
+    return () => {
+      showMessage.dismiss();
+    };
+  }, []);
 
   function handleSortTasks({ field }: Pick<SortTasksOptions, "field">) {
     setSortOptions((prev) => ({
@@ -49,10 +47,14 @@ export function History() {
   }
 
   function handleResetHistory() {
-    showMessage.dismiss()
+    showMessage.dismiss();
     showMessage.confirm(
       "Are you sure you want to delete the history?",
-      (confirmation) => setConfirmClearHistory(confirmation),
+      (confirmation) => {
+        if (!confirmation) return;
+        
+        dispatch({ type: TaskActionTypes.RESET_STATE });
+      },
     );
   }
 
