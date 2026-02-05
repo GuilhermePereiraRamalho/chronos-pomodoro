@@ -4,8 +4,24 @@ import { DefaultButton } from "../../components/DefaultButton";
 import { DefaultInput } from "../../components/DefaultInput";
 import { Heading } from "../../components/Heading";
 import { MainTemplate } from "../../templates/MainTemplate";
+import { useRef } from "react";
+import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 
 export function Settings() {
+  const { state } = useTaskContext();
+  const workTimeInput = useRef<HTMLInputElement>(null);
+  const shortBreakTimeInput = useRef<HTMLInputElement>(null);
+  const longBreakTimeInput = useRef<HTMLInputElement>(null);
+
+  function handleSaveSettings(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const workTime = workTimeInput.current?.value;
+    const shortBreakTime = shortBreakTimeInput.current?.value;
+    const longBreakTime = longBreakTimeInput.current?.value;
+
+    console.log(workTime, shortBreakTime, longBreakTime);
+  }
   return (
     <>
       <MainTemplate>
@@ -20,15 +36,30 @@ export function Settings() {
         </Container>
 
         <Container>
-          <form action="" className="form">
+          <form onSubmit={handleSaveSettings} action="" className="form">
             <div className="formRow">
-              <DefaultInput id="workTime" labelText="Focus" />
+              <DefaultInput
+                id="workTime"
+                labelText="Focus"
+                ref={workTimeInput}
+                defaultValue={state.config.workTime}
+              />
             </div>
             <div className="formRow">
-              <DefaultInput id="shortBreakTime" labelText="Short Break" />
+              <DefaultInput
+                id="shortBreakTime"
+                labelText="Short Break"
+                ref={shortBreakTimeInput}
+                defaultValue={state.config.shortBreakTime}
+              />
             </div>
             <div className="formRow">
-              <DefaultInput id="longBreakTime" labelText="Long Break" />
+              <DefaultInput
+                id="longBreakTime"
+                labelText="Long Break"
+                ref={longBreakTimeInput}
+                defaultValue={state.config.longBreakTime}
+              />
             </div>
             <div className="formRow">
               <DefaultButton
