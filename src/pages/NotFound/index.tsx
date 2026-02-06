@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Container } from "../../components/Container";
 import { GenericHtml } from "../../components/GenericHtml";
 import { Heading } from "../../components/Heading";
@@ -5,6 +6,10 @@ import { RouterLink } from "../../components/RouterLink";
 import { MainTemplate } from "../../templates/MainTemplate";
 
 export function NotFound() {
+  useEffect(() => {
+    document.title = "Not Found - Chronos Pomodoro";
+  }, []);
+
   return (
     <>
       <MainTemplate>
@@ -18,9 +23,10 @@ export function NotFound() {
             </p>
             <p>
               But don’t worry—you’re not lost in space (yet). You can safely go
-              back to the <RouterLink href="/">home page</RouterLink> or to the <RouterLink href="/history/">history</RouterLink>{" "}
-              — or you can stay here and pretend you’ve discovered a secret page
-              that only the coolest explorers can access. 🧭✨
+              back to the <RouterLink href="/">home page</RouterLink> or to the{" "}
+              <RouterLink href="/history/">history</RouterLink> — or you can
+              stay here and pretend you’ve discovered a secret page that only
+              the coolest explorers can access. 🧭✨
             </p>
             <p>
               If you think this page should exist (or if you just want to chat

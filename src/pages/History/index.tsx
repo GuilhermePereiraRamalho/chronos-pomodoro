@@ -17,6 +17,10 @@ export function History() {
   const { state, dispatch } = useTaskContext();
   const hasTasks = state.tasks.length > 0;
 
+  useEffect(() => {
+    document.title = "History - Chronos Pomodoro";
+  }, []);
+
   const [sortOptions, setSortOptions] = useState<{
     field: SortTasksOptions["field"];
     direction: SortTasksOptions["direction"];
@@ -52,7 +56,7 @@ export function History() {
       "Are you sure you want to delete the history?",
       (confirmation) => {
         if (!confirmation) return;
-        
+
         dispatch({ type: TaskActionTypes.RESET_STATE });
       },
     );
