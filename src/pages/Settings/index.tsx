@@ -7,9 +7,10 @@ import { MainTemplate } from "../../templates/MainTemplate";
 import { useRef } from "react";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { showMessage } from "../../adapters/showMessage";
+import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 
 export function Settings() {
-  const { state } = useTaskContext();
+  const { state, dispatch } = useTaskContext();
   const workTimeInput = useRef<HTMLInputElement>(null);
   const shortBreakTimeInput = useRef<HTMLInputElement>(null);
   const longBreakTimeInput = useRef<HTMLInputElement>(null);
@@ -28,15 +29,15 @@ export function Settings() {
       formErrors.push("Enter numbers only for ALL fields");
     }
 
-    if (workTime < 1 || workTime > 99){
+    if (workTime < 1 || workTime > 99) {
       formErrors.push("Enter values between 1 and 99 for focus");
     }
 
-    if (shortBreakTime < 1 || shortBreakTime > 30){
+    if (shortBreakTime < 1 || shortBreakTime > 30) {
       formErrors.push("Enter values between 1 and 30 for short break");
     }
 
-    if (longBreakTime < 1 || longBreakTime > 60){
+    if (longBreakTime < 1 || longBreakTime > 60) {
       formErrors.push("Enter values between 1 and 60 for long break");
     }
 
@@ -47,7 +48,15 @@ export function Settings() {
       return;
     }
 
-    console.log("SAVE");
+    dispatch({
+      type: TaskActionTypes.CHANGE_SETTINGS,
+      payload: {
+        workTime,
+        shortBreakTime,
+        longBreakTime,
+      },
+    });
+    showMessage.success("Settings saved successfully")
   }
   return (
     <>
